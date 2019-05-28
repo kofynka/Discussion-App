@@ -30,8 +30,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "../node_modules/feather-icons/dist/feather.min.js",
-              "../node_modules/pusher-js/dist/web/pusher.min.js"
+              "./node_modules/pusher-js/dist/web/pusher.min.js"
             ],
             "es5BrowserSupport": true
           },

@@ -1,11 +1,13 @@
-//server
-
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const Pusher = require('pusher');
+
 const Sentiment = require('sentiment');
 const sentiment = new Sentiment();
+
+const app = express();
+const port = process.env.PORT || 4000;
 
 const pusher = new Pusher({
     appId: process.env.PUSHER_APP_ID,
@@ -35,10 +37,15 @@ app.post('/messages', (req, res) => {
         text,
         name,
         timeStamp: new Date(),
-};
+        score: result.score,
+    };
 
     try {
-        pusher.trigger(['chat', 'rate'], 'message', data);
+        pusher.trigger(['discussion', 'rate'], 'message', data);
     } catch (e) {}
     res.json(data);
+});
+
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
 });

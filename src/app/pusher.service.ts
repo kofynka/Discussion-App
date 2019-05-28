@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
     @Injectable()
     export class PusherService {
       constructor() {  
-        this.pusher = new Pusher("2c4a587fd9901476e039", {
+        this.pusher = new Pusher('2c4a587fd9901476e039', {
           cluster: 'eu',
           encrypted: true,
         });
