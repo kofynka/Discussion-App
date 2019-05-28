@@ -17,6 +17,8 @@ const pusher = new Pusher({
     encrypted: true,
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
@@ -27,6 +29,7 @@ app.use((req, res, next) => {
 });
 
 app.post('/messages', (req, res) => {
+    console.log('message sent lol');
     const { body } = req;
     const { text, name } = body;
     const result = sentiment.analyze(text);
