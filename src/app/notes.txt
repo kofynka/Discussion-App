@@ -1,18 +1,25 @@
-express web framework
+express web framework!!
 - for recieving requests from Angular App
 
-dotenv library is a zero-dependency module loaded on init
-- loads variables from .env
 
-sentimen JS library
+dotenv library is a zero-dependency module loaded on init
+- loads variables from .env 
+- used to avoid adding sensitive information 
+  like appId and secret into codebase directly
+
+
+Cross-Origin Resource Sharing (CORS) header
+- to tell a browser to let webapp access selected resources 
+  from a server
+
+
+sentiment JS library
 - for analyzing data
+
 
 discussion.component.ts
 - sendMessage method uses the native HttpClient 
   to make requests to the server
 - post method takes a URL and the request body as parameters
-  We then append the data returned to the array of messages
+  we then append the data returned to the array of messages
 - in ngOnInit we initialize feather icon set
-
-pusher package
-- 
