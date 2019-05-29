@@ -17,11 +17,11 @@
         <div class="pic">
           <img src="/assets/man.svg" alt="profile-img">
         </div>
-        <div class="message-text">
-          <span>{{message.name}}</span>
+        <div class="message-text" id="message-{{message.id}}">
+          <span>{{message.name}} on {{message.created | date:'short'}}</span>
           <p>{{message.text}}</p>
         </div>
       </div>
     </div>
-    <app-discussion></app-discussion>
+    <app-discussion (onSendMessage)="messageRec($event)"></app-discussion>
   </div>

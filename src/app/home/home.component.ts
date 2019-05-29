@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Message } from '../discussion/discussion.component';
-import { PusherService } from '../pusher.service';
+import {Component, OnInit} from '@angular/core';
+import {Message} from '../discussion/discussion.component';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +8,14 @@ import { PusherService } from '../pusher.service';
 })
 
 export class HomeComponent implements OnInit {
-  constructor(private pusher: PusherService){}
-  messages: Array<Message> = [];
+
+  messages: Message[] = [];
 
   ngOnInit() {
-    const channel = this.pusher.init('discussion');
-    channel.bind('message', (data) => {
-      this.messages = this.messages.concat(data);
-    });
+
+  }
+
+  messageRec(message: Message) {
+    this.messages.push(message);
   }
 }

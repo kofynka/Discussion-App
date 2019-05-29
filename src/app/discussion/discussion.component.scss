@@ -1,9 +1,9 @@
 %input {
     width: 100%;
     border: none;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(146, 162, 172, 0.08);
     padding: 10px;
-    color: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     font-weight: bold;
     font-family: 'Roboto Condensed', sans-serif;
@@ -30,10 +30,10 @@
             }
         }
         button {
-            width: 25%;
+            width: 30%;
             border: none;
             background: rgb(53, 71, 78);
-            color: black;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;

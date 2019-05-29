@@ -1,37 +1,42 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {DiscussionService} from './discussion.service';
 
-declare const feather: any;
-export interface Message {
+
+export class Message {
   text: string;
   name: string;
+  id: number;
+  created: Date;
 }
+
+
 @Component({
   selector: 'app-discussion',
   templateUrl: './discussion.component.html',
   styleUrls: ['./discussion.component.scss'],
 })
 export class DiscussionComponent implements OnInit {
-  constructor(private http: HttpClient) {}
   @Output() onSendMessage: EventEmitter<Message> = new EventEmitter();
-  message = {
-    name: '',
-    text: '',
-  };
+
+  private message: Message;
+
+  constructor(private service: DiscussionService) {
+  }
+
+
   sendMessage() {
+    this.message.text = this.message.text.trim()
+    this.message.name = this.message.name.trim()
     if (this.message.text !== '' && this.message.name !== '') {
-      this.http
-        .post(`http://localhost:4000/messages`, this.message)
+      this.service.post(this.message)
         .subscribe((res: Message) => {
-          this.onSendMessage.emit(res);
-          this.message = {
-            name: '',
-            text: '',
-          };
+          this.onSendMessage.emit(this.message);
+          this.message = new Message();
         });
     }
   }
+
   ngOnInit() {
-    feather.replace(); 
+    this.message = new Message();
   }
 }
